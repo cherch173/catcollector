@@ -1,0 +1,20 @@
+<!-- Step 10 Part 5) Respond to Client's HTTP Request -->
+{% extends 'base.html' %} {% block content%}
+
+<h1>CatList</h1>
+
+{% for cat in cats %}
+    <div class="card">
+        <div class="card-content">
+            <span class="card-title">{{ cat.name }}</span>
+            <p>Description: {{ cat.description }}</p>
+            {% if cat.age > 0 %}
+            <p>Age: {{ cat.age }}</p>
+            {% else %}
+            <p>Age: Kitten</p>
+            {% endif %}
+        </div>
+    </div>
+
+
+{% endfor %} {% endblock%}
