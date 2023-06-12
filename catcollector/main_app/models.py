@@ -96,8 +96,29 @@ def __str__(self):
 # <Cat: Meatball>
 
 # Step 7.10 FILTERING / QUERING for RECORDS objects.filter()
+# these kinds of queries are called FIELD LOOKUPS
 # >>> Cat.objects.filter(name="Meatball")
 # <QuerySet [<Cat: Meatball>]>
+
+# you can use contains, gte and lte to filter search
+# >>> Cat.objects.filter(name_contains='Meat')
+# >>> Cat.objects.filter(age_lte=5)
+
+# Step 7.11 RETURN A SINGLE RECORD / SINGLE OBJECT get()
+# use GET METHOD and provide an ID #
+# >>> Cat.objects.get(id=1)
+
+# Step 7.12 ORDERING OBJECTS (SHORTING) order_by('')
+# use the ORDER BY METHOD
+# >>> Cat.objects.order_by('age')
+
+# for DESCENDING ORDER use a negative sign before string
+# Cat.objects.order_by('-age')
+
+# it can be INDEXED too if you need
+# >>> Cat.objects.order_by('-age')[0]
+
+
 
 
 
