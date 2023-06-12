@@ -36,7 +36,7 @@ class Cat(models.Model):
 # python3 manage.py shell
 # this will load a >>> prompt meaning ORM is active
 
-# Step 7.2 IMPORT model to DB
+# Step 7.2 (C - CREATE) IMPORT model to DB
 # >>> from main_app.models import Cat
 # test by pressing enter
 
@@ -71,6 +71,27 @@ class Cat(models.Model):
 
 def __str__(self):
     return f'{self.name} ({self.id})'
+
+# Step 7.8 RELOAD the SHELL
+# use exit() or crtl+D to leave the shell
+# relaunch the shell using python3 manage.py shell
+# RE-IMPORT your MODEL
+# from main_app.models import Cat
+
+# Step 7.9 (U - UPDATE) UPDATE the 
+# to view the FIRST ROW of your DB use first()
+# to view the LAST ROW of your DB use last()
+
+# SELECT the attribute using first() or last()
+# then OVERRIDE the VALUE you want using dot notation
+# (Example)
+# >>> c = Cat.objects.first()
+# >>> c
+#  <Cat: Princess Meatball>
+# >>> c.name = 'Meatball'
+# >>> c.save()
+# >>> c
+# <Cat: Meatball>
 
 
 
