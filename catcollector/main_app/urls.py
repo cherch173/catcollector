@@ -10,5 +10,6 @@ urlpatterns = [
     # VID 2 (Models) 
     # Step 10.1 Determine the proper route for Details Page
     # (/cats/:id)
-    
+    # Step 10.3 DEFINE the DETAILS (Show functionality) ROUTE
+    path('/cats/<int:cat_id>/', views.cats_details, name='detail'),
 ]
