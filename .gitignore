@@ -82,8 +82,13 @@ target/
 *.log
 *.pot
 *.pyc
-__pycache__/
-local_settings.py
-
+# Env #
+#######
 .env
+# Python #
+#######
+*.pyc
+__pycache__/
+
 db.sqlite3
+db.postgresql
