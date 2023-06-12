@@ -1,5 +1,8 @@
 from django.shortcuts import render
 
+# VID 2 (Models) Step 8.0 IMPORT the CAT MODEL
+from .models import Cat
+
 # (Baby Step) Part 10 Step 4) Code the View - add the cats!
 # cats = [
 #   {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
@@ -15,6 +18,8 @@ def about(request):
 
 # Part 10 Step 4) Code the View
 def cats_index(request):
+    # VID 2 (Models) Step 8.1 INCLUDE the ALL METHOD to INDEX FUNCTION
+    cats = Cat.objects.all()
     return render(request, 'cats/index.html', {
         'cats': cats
     })
