@@ -78,12 +78,14 @@ def __str__(self):
 # RE-IMPORT your MODEL
 # from main_app.models import Cat
 
-# Step 7.9 (U - UPDATE) UPDATE the 
+
+# Step 7.9 (U - UPDATE) UPDATE an OBJECT
+
 # to view the FIRST ROW of your DB use first()
 # to view the LAST ROW of your DB use last()
-
 # SELECT the attribute using first() or last()
 # then OVERRIDE the VALUE you want using dot notation
+# then SAVE it using save()
 # (Example)
 # >>> c = Cat.objects.first()
 # >>> c
@@ -92,6 +94,12 @@ def __str__(self):
 # >>> c.save()
 # >>> c
 # <Cat: Meatball>
+
+# Step 7.10 FILTERING / QUERING for RECORDS objects.filter()
+# >>> Cat.objects.filter(name="Meatball")
+# <QuerySet [<Cat: Meatball>]>
+
+
 
 
 
