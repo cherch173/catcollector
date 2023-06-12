@@ -28,4 +28,6 @@ def cats_index(request):
     # DEFINE Addtl PARAMETERS to ACCEPT your NEW ARGUMENTS (passed in as KWARG)
 def cats_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
-    return render(request, 'cats/detail.html', { 'cat': cat })
+    return render(request, 'cats/detail.html', { 
+        'cat': cat 
+    })
