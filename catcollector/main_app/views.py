@@ -31,6 +31,7 @@ def cats_index(request):
 # python3 manage.pr createsuperuser
 
 # enter username
+# leave email blank for novelty projects
 # enter password you can remember cause you can't see it
 
 # if you mess up use python3 manage.py changepassword <user_name>
