@@ -1,4 +1,7 @@
 from django.db import models
+# VID 3 (CBVs) Part 5 Step 5.7
+# import REVERSE
+from django.urls import reverse
 
 # Create your models here.
 
@@ -13,6 +16,7 @@ class Cat(models.Model):
     description = models.TextField(max_length=250)
     age = models.IntegerField()
     # use DecimalField for MONEY or MONETARY VALUE
+
 
 
 # VID 2 (Models) Step 6.0 MIGRATIONS
@@ -119,7 +123,13 @@ def __str__(self):
 # >>> Cat.objects.order_by('-age')[0]
 
 
+# #############################
 
+# VID 3 (CBVs) Part 5 Step 5.6
+# ADD an INSTANCE METHOD for an ABSOLUTE URL
+def get_absolute_url(self):
+    # use return REVERSE to return the correct path for DETAIL named route
+    return reverse('detail', kawrgs={'cat_id': self.id})
 
 
 

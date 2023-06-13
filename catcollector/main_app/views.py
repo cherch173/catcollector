@@ -44,6 +44,12 @@ def cats_detail(request, cat_id):
 class CatCreate(CreateView):
     model = Cat
     fields = '__all__'
+    # Part 5 Step 5.5 if you want an easy redirect for your newly created cat
+    # functionality you can enter a SUCCESS URL to an explicit id
+    # (example)
+    # success_url= '/cats/{cat_id}'
+    # or just to the index
+    success_url = '/cats'
 
 # Part 5 Step 5.1 touch new/create template html using
 # touch main_app/templates/main_app/cat_form.html
