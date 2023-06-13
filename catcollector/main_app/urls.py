@@ -15,5 +15,8 @@ urlpatterns = [
     # VID 3 (CBVs)
     # Step 5 Part 3 DEFINE the CREATE ROUTE (new cat)
     path('cats/create/', views.CatCreate.as_view(), name='cats_create'),
+    # Step 6 Part 1 DEFINE the UPDATE *and* DELETE ROUTES as they're similar
+    path('cats/<int:pk>/update/', views.CatUpdate.as_view(), name='cats_update'),
+    path('cats/<int:pk>/delete/', views.CatDelete.as_view(), name='cats_delete'),
 
 ]
