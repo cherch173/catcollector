@@ -39,7 +39,11 @@ def cats_detail(request, cat_id):
         'cat': cat 
     })
 
-# VID 3 (CBVs) CODE the VIEW as a CLASS (not DEF) for CREATE (New Page)
+# VID 3 (CBVs) 
+# Part 5 Step 4.2 CODE the VIEW as a CLASS (not DEF) for CREATE (New Page)
 class CatCreate(CreateView):
     model = Cat
     fields = '__all__'
+
+# Part 5 Step 5.1 touch new/create template html using
+# touch main_app/templates/main_app/cat_form.html

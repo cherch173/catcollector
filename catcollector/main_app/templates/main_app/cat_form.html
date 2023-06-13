@@ -1,0 +1,19 @@
+<!-- VID 3 (CBVs)
+Part 5 Step 5.1 add html for CREATE (new) page -->
+
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Part 5 Step 5.2 add header -->
+<h1>Add a Cat</h1>
+<!-- Part 5 Step 5.3 add form html for new cat -->
+<form action="" method="POST">
+    <!-- Part 5 Step 5.4 add this django token for security purposes -->
+    {% csrf_token %}
+    <table>
+        <!-- Part 5 Step. 5.5 render inputs inside of trs and tds -->
+        {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit!" class="btn">
+</form>
+{% endblock %}
