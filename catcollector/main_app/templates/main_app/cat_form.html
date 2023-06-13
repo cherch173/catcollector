@@ -4,8 +4,16 @@ Part 5 Step 5.1 add html for CREATE (new) page -->
 {% extends 'base.html' %}
 
 {% block content %}
+
+<!-- Part 6 Step 5 Add if/else to CAT FORM HTML to switch
+between ADD a Cat and EDIT a cat -->
+{% if object %}
+<h1>Edit <span class="teal-text">{{object.name}}</span></h1>
+{% else %}
 <!-- Part 5 Step 5.2 add header -->
 <h1>Add a Cat</h1>
+<!-- Part 6 Step 5.1 close if/else -->
+{% endif %}
 <!-- Part 5 Step 5.3 add form html for new cat -->
 <form action="" method="POST">
     <!-- Part 5 Step 5.4 add this django token for security purposes -->

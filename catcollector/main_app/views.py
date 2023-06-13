@@ -2,10 +2,12 @@ from django.shortcuts import render
 
 # VID 3 (CBVs)
 # Part 5 Step 4 IMPORT the CREATE VIEW
-from django.views.generic.edit import CreateView
+# Part 6 Step 3 add UPDATE & VIEW to existing VIEWS IMPORT
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # VID 2 (Models) Step 8.0 IMPORT the CAT MODEL
 from .models import Cat
+
 
 
 # (VID 1 Baby Step) Part 10 Step 4) Code the View - add the cats!
@@ -47,9 +49,19 @@ class CatCreate(CreateView):
     # Part 5 Step 5.5 if you want an easy redirect for your newly created cat
     # functionality you can enter a SUCCESS URL to an explicit id
     # (example)
-    # success_url= '/cats/{cat_id}'
+    # success_url = '/cats/{cat_id}'
     # or just to the index
     success_url = '/cats'
 
 # Part 5 Step 5.1 touch new/create template html using
 # touch main_app/templates/main_app/cat_form.html
+
+# Part 6 Step 4.1 ADD the VIEW for UPDATE
+class CatUpdate(UpdateView):
+    model = Cat
+    fields = ['breed', 'description', 'age']
+    success_url = '/cats'
+# Part 6 Step 4.2 ADD the VIEW for DELETE
+class CatDelete(DeleteView):
+    model = Cat
+    success_url = '/cats'
