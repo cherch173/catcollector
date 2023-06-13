@@ -1,13 +1,19 @@
 from django.shortcuts import render
 
+# VID 3 (CBVs)
+# Part 5 Step 4 IMPORT the CREATE VIEW
+from django.views.generic.edit import CreateView
+
 # VID 2 (Models) Step 8.0 IMPORT the CAT MODEL
 from .models import Cat
 
-# (Baby Step) Part 10 Step 4) Code the View - add the cats!
+
+# (VID 1 Baby Step) Part 10 Step 4) Code the View - add the cats!
 # cats = [
 #   {'name': 'Lolo', 'breed': 'tabby', 'description': 'furry little demon', 'age': 3},
 #   {'name': 'Sachi', 'breed': 'calico', 'description': 'gentle and loving', 'age': 2},
 # ]
+
 
 # Create your views here.
 def home(request):
@@ -24,10 +30,16 @@ def cats_index(request):
         'cats': cats
     })
 
-# VID 2 Step 10.4 CODE the VIEW for DETAILS PAGE (Show Functionality)
+# VID 2 (Models)
+# Step 10.4 CODE the VIEW for DETAILS PAGE (Show Functionality)
     # DEFINE Addtl PARAMETERS to ACCEPT your NEW ARGUMENTS (passed in as KWARG)
 def cats_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
     return render(request, 'cats/detail.html', { 
         'cat': cat 
     })
+
+# VID 3 (CBVs) CODE the VIEW as a CLASS (not DEF) for CREATE (New Page)
+class CatCreate(CreateView):
+    model = Cat
+    fields = '__all__'

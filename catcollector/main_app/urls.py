@@ -12,4 +12,8 @@ urlpatterns = [
     # (/cats/:id)
     # Step 10.3 DEFINE the DETAILS (Show functionality) ROUTE
     path('cats/<int:cat_id>/', views.cats_detail, name='detail'),
+    # VID 3 (CBVs)
+    # Step 5 Part 3 DEFINE the CREATE ROUTE (new cat)
+    path('cats/create/', views.CatCreate.as_view(), name='cats_create'),
+
 ]
