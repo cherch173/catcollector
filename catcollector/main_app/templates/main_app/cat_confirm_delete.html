@@ -12,6 +12,10 @@ touch main_app/templates/main_app/cat_confirm_delete.html -->
   <form action="" method="POST">
     {% csrf_token %}
     <input type="submit" value="Yes - Delete!" class="btn">
-    <a href="{% url 'detail' cat.id %}">Cancel</a>
-  </form>
+    <br>
+    <br>
+    <br>
+    <!-- <a href="{% url 'detail' cat.id %}">Cancel</a> -->
+</form>
+<button onclick="window.location.href='/cats'" style="background-color: salmon; color: white; height: 6vmin; width: 18vmin">CANCEL</button>
 {% endblock %}
