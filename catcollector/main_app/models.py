@@ -165,6 +165,10 @@ class Feeding(models.Model):
 # Part 3.4 ADD the __STR__ METHOD to FEEDING CLASS OBJECT
     def __str__(self):
         return f"{self.get_meal_display()} on {self.date}"
+    
+    # VID 5 (One to Many) -- ORDERING your FEEDINGS w NESTED CLASS
+    class Meta:
+        ordering = ['-date']
 
 # Part 5 MAKE MIGRATIONS to DATABASE'S SCHEMA
 # python3 manage.py makemigrations
