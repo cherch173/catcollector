@@ -188,34 +188,34 @@ class Feeding(models.Model):
 # >>> c
 # <Cat: Maki>
 
-# obtain all feeding objects for a cat using the "related manager" object [X]
+# obtain all feeding objects for a cat using the "related manager" object [√]
 # >>> c.feeding_set.all()
 # <QuerySet []>
 
-# create a feeding for a given cat
+# create a feeding for a given cat [√]
 # >>> c.feeding_set.create(date='2022-10-06')
 # <Feeding: Breakfast on 2022-10-06>
 
-# yup, it's there and the default of 'B' for the meal worked
+# yup, it's there and the default of 'B' for the meal worked [√]
 # >>> Feeding.objects.all()
 # <QuerySet [<Feeding: Breakfast on 2022-10-06>]>
 
-# and it belongs to a cat
+# and it belongs to a cat [√]
 # >>> c.feeding_set.all()
 # <QuerySet [<Feeding: Breakfast on 2022-10-06>]>
 
-# get the first feeding object in the db
+# get the first feeding object in the db [√]
 # >>> f = Feeding.objects.first()
 # >>> f
 # <Feeding: Breakfast on 2022-10-06>
 
-# cat is the name of the field we defined in the Feeding model
+# cat is the name of the field we defined in the Feeding model [√]
 # >>> f.cat
 # <Cat: Maki>
 # >>> f.cat.description
-
 'Lazy but ornery & cute'
-# another way to create a feeding for a cat
+
+# another way to create a feeding for a cat [√]
 # >>> f = Feeding(date='2022-10-06', meal='L', cat=c)
 # >>> f.save()
 # >>> f
@@ -223,7 +223,7 @@ class Feeding(models.Model):
 # >>> c.feeding_set.all()
 # <QuerySet [<Feeding: Breakfast on 2022-10-06>, <Feeding: Lunch on 2022-10-06>]>
 
-# finish the day's feeding, this time using the create method
+# finish the day's feeding, this time using the create method [√]
 # >>> Feeding.objects.create(date='2022-10-06', meal='D', cat=c)
 # >>> c.feeding_set.count()
 # 3
