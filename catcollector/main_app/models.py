@@ -80,8 +80,8 @@ class Cat(models.Model):
 # changing this INSTANCE METHOD does not impact the DATABASE,
 # therefore no makemigrations are necessary
 
-def __str__(self):
-    return f'{self.name} ({self.id})'
+    def __str__(self):
+        return f'{self.name} ({self.id})'
 
 # Step 7.8 RELOAD the SHELL
 # use exit() or crtl+D to leave the shell
@@ -156,24 +156,92 @@ class Feeding(models.Model):
     # with only ONE CHARACTER can be FIELD CHOICES
 
 # Part 3.5 CREATE a FOREIGN KEY of cat for cat_id
-cat = models.ForeignKey(
-    Cat, 
-    on_delete=models.CASCADE
-)
+    cat = models.ForeignKey(
+        Cat, 
+        on_delete=models.CASCADE
+    )
 
 # Part 3.4 ADD the __STR__ METHOD to FEEDING CLASS OBJECT
-def __str__(self):
-    return f"{self.get_meal_display()} on {self.date}"
+    def __str__(self):
+        return f"{self.get_meal_display()} on {self.date}"
 
 # Part 5 MAKE MIGRATIONS to DATABASE'S SCHEMA
 # python3 manage.py makemigrations
 # python3 manage.py showmigrations
 # python3 manage.py migrate
 
-# Part 5.1
+# Part 6 TEST the MODELS in the SHELL
 # python3 manage.py shell
+
+# Part 6.1 IMPORT the MODEL
+# use * to import EVERYTHING instead of individual features
 # >>> from main_app.models import *
 # >>> Feeding
 # <class 'main_app.models.Feeding'>
 # >>> MEALS
 # (('B', 'Breakfast'), ('L', 'Lunch'), ('D', 'Dinner'))
+
+# Paet 6.2 CREATE A FEEDING for a CAT (One to Many) in SHELL ORM
+
+# get first cat object in db [√]
+# >>> c = Cat.objects.first()   # or Cat.objects.all()[0]
+# >>> c
+# <Cat: Maki>
+
+# obtain all feeding objects for a cat using the "related manager" object [X]
+# >>> c.feeding_set.all()
+# <QuerySet []>
+
+# create a feeding for a given cat
+# >>> c.feeding_set.create(date='2022-10-06')
+# <Feeding: Breakfast on 2022-10-06>
+
+# yup, it's there and the default of 'B' for the meal worked
+# >>> Feeding.objects.all()
+# <QuerySet [<Feeding: Breakfast on 2022-10-06>]>
+
+# and it belongs to a cat
+# >>> c.feeding_set.all()
+# <QuerySet [<Feeding: Breakfast on 2022-10-06>]>
+
+# get the first feeding object in the db
+# >>> f = Feeding.objects.first()
+# >>> f
+# <Feeding: Breakfast on 2022-10-06>
+
+# cat is the name of the field we defined in the Feeding model
+# >>> f.cat
+# <Cat: Maki>
+# >>> f.cat.description
+
+'Lazy but ornery & cute'
+# another way to create a feeding for a cat
+# >>> f = Feeding(date='2022-10-06', meal='L', cat=c)
+# >>> f.save()
+# >>> f
+# <Feeding: Lunch on 2022-10-06>
+# >>> c.feeding_set.all()
+# <QuerySet [<Feeding: Breakfast on 2022-10-06>, <Feeding: Lunch on 2022-10-06>]>
+
+# finish the day's feeding, this time using the create method
+# >>> Feeding.objects.create(date='2022-10-06', meal='D', cat=c)
+# >>> c.feeding_set.count()
+# 3
+
+# feed another cat
+# (ensure a cat with id of 3 exists)
+# >>> c = Cat.objects.get(id=3)
+# >>> c
+# <Cat: Whiskers>
+# >>> c.feeding_set.create(date='2022-10-07', meal='B')
+# <Feeding: Breakfast on 2022-10-07>
+# >>> Feeding.objects.filter(meal='B')
+# <QuerySet [<Feeding: Breakfast on 2022-10-06>, <Feeding: Breakfast on 2022-10-07>]>
+
+# the foreign key (cat_id) can be used as well
+# >>> Feeding.objects.filter(cat_id=2)
+# <QuerySet [<Feeding: Breakfast on 2022-10-06>, <Feeding: Lunch on 2022-10-06>, <Feeding: Dinner on 2022-10-06>]>
+# >>> Feeding.objects.create(date='2022-10-07', meal='L', cat_id=3)
+# >>> Cat.objects.get(id=3).feeding_set.all()
+# <QuerySet [<Feeding: Breakfast on 2022-10-07>, <Feeding: Lunch on 2022-10-07>]>
+# exit()
