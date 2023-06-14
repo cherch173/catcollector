@@ -11,7 +11,7 @@
   <div class="col s6">
     <div class="card">
       <div class="card-content">
-        <span class="card-title">{{ cat.name }}</span>
+        <span class="card-title indigo-text">{{ cat.name }}</span>
         <p>Breed: {{ cat.breed }}</p>
         <p>Description: {{ cat.description|linebreaks }}</p>
         {% if cat.age > 0 %}
@@ -21,15 +21,15 @@
         {% endif %}
       </div>
       <div class="card-action">
-        <a href="{% url 'cats_update' cat.id %}">Edit</a>
-        <a href="{% url 'cats_delete' cat.id %}">Delete</a>
+        <a class="teal-text" href="{% url 'cats_update' cat.id %}">Edit</a>
+        <a class="teal-text" href="{% url 'cats_delete' cat.id %}">Delete</a>
       </div>
     </div>
   </div>
   <div class="col s6">
-    <table class="striped">
+    <table class="striped blue-grey" style="color:whitesmoke; border-radius: 5px;">
       <thead>
-        <tr>
+        <tr style="font-size: 2.5vmin;">
           <th>Date</th>
           <th>Meal</th>
         </tr>
