@@ -54,6 +54,7 @@
   </div>
 </div>
 
+<!-- Vid 5 (One to Many) Part 9.5 ADD JS to DETAIL html for DATE PICKER -->
 <script>
   const dateEl = document.getElementById('id_date');
      // M is Materialize's global variable
@@ -63,6 +64,9 @@
     setDefaultDate: true,
     autoClose: true
   });
+  // Part 9.6 Addtl JS to MEALS initialize select below
+  const selectEl = document.getElementById('id_meal');
+  M.FormSelect.init(selectEl);
 </script>
 
 {% endblock %}
