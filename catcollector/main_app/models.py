@@ -5,6 +5,15 @@ from django.urls import reverse
 
 # Create your models here.
 
+# VID 4 (One to Many) Step 3.2
+# CREATE the MEALS MODEL as TUPLE of TWO TUPLES (one to many model)
+MEALS = (
+    ('B', 'Breakfast'),
+    ('L', 'Lunch'),
+    ('D', 'Dinner')
+)
+
+
 # VID 2 (Models) Step 5.0
 # First, DEFINE your MODEL as a class (capitliaze so you know its a class)
 class Cat(models.Model):
@@ -16,8 +25,6 @@ class Cat(models.Model):
     description = models.TextField(max_length=250)
     age = models.IntegerField()
     # use DecimalField for MONEY or MONETARY VALUE
-
-
 
 # VID 2 (Models) Step 6.0 MIGRATIONS
 # make MIGRATIONS to update the database with your new MODEL
@@ -82,7 +89,6 @@ def __str__(self):
 # RE-IMPORT your MODEL
 # from main_app.models import Cat
 
-
 # Step 7.9 (U - UPDATE) UPDATE an OBJECT
 
 # to view the FIRST ROW of your DB use first()
@@ -131,7 +137,26 @@ def get_absolute_url(self):
     # use return REVERSE to return the correct path for DETAIL named route
     return reverse('detail', kawrgs={'cat_id': self.id})
 
+# #############################
+# VID 4 (One To Many)
 
+# Part 3.1 ADD the FEEDING MODEL as a new CLASS
+# ORDER does matter here so be sure to add new models below the main model
 
+class Feeding(models.Model):
+    date = models.DateField()
+    meal = models.CharField(
+        max_length=1,
+        # Step 3.3 use CHOICES to add FIELD OPTION
+        choices=MEALS,
+        # now set a default choice
+        default=MEALS[0][0]
+    )
+    # ^^^ using max_length=1 ONLY to show how STRINGS 
+    # with only ONE CHARACTER can be FIELD CHOICES
+
+# Part 3.4 ADD the __STR__ METHOD to FEEDING CLASS OBJECT
+def __str__(self):
+    return f"{self.get_meal_display()} on {self.date}"
 
 
