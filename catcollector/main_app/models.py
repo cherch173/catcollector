@@ -155,6 +155,12 @@ class Feeding(models.Model):
     # ^^^ using max_length=1 ONLY to show how STRINGS 
     # with only ONE CHARACTER can be FIELD CHOICES
 
+# Part 3.5 CREATE a FOREIGN KEY of cat for cat_id
+cat = models.ForeignKey(
+    Cat, 
+    on_delete=models.CASCADE
+)
+
 # Part 3.4 ADD the __STR__ METHOD to FEEDING CLASS OBJECT
 def __str__(self):
     return f"{self.get_meal_display()} on {self.date}"
