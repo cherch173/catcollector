@@ -136,9 +136,9 @@ class Cat(models.Model):
 
 # VID 3 (CBVs) Part 5 Step 5.6
 # ADD an INSTANCE METHOD for an ABSOLUTE URL
-def get_absolute_url(self):
-    # use return REVERSE to return the correct path for DETAIL named route
-    return reverse('detail', kawrgs={'cat_id': self.id})
+    def get_absolute_url(self):
+        # use return REVERSE to return the correct path for DETAIL named route
+        return reverse('detail', kawrgs={'cat_id': self.id})
 
 # #############################
 # VID 4 (One To Many)
