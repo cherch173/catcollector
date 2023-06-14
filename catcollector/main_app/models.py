@@ -144,7 +144,8 @@ def get_absolute_url(self):
 # ORDER does matter here so be sure to add new models below the main model
 
 class Feeding(models.Model):
-    date = models.DateField()
+    # Step 7.3 add CUSTOM FIELD LABEL to DateField
+    date = models.DateField('feeding Date')
     meal = models.CharField(
         max_length=1,
         # Step 3.3 use CHOICES to add FIELD OPTION
