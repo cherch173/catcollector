@@ -165,4 +165,15 @@ cat = models.ForeignKey(
 def __str__(self):
     return f"{self.get_meal_display()} on {self.date}"
 
+# Part 5 MAKE MIGRATIONS to DATABASE'S SCHEMA
+# python3 manage.py makemigrations
+# python3 manage.py showmigrations
+# python3 manage.py migrate
 
+# Part 5.1
+# python3 manage.py shell
+# >>> from main_app.models import *
+# >>> Feeding
+# <class 'main_app.models.Feeding'>
+# >>> MEALS
+# (('B', 'Breakfast'), ('L', 'Lunch'), ('D', 'Dinner'))
