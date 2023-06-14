@@ -39,14 +39,13 @@ def cats_index(request):
 # Step 10.4 CODE the VIEW for DETAILS PAGE (Show Functionality)
     # DEFINE Addtl PARAMETERS to ACCEPT your NEW ARGUMENTS (passed in as KWARG)
 def cats_detail(request, cat_id):
-    cat = Cat.objects.get(id=cat_id)
-    # VID # 5 (One to Many)
-    # Part 9.3 Instantiate FeedingForm to be rendered in the template
-    feeding_form = FeedingForm()
-    return render(request, 'cats/detail.html', { 
-        'cat': cat,
-        'feeding_form': feeding_form 
-    })
+  cat = Cat.objects.get(id=cat_id)
+  # instantiate FeedingForm to be rendered in the template
+  feeding_form = FeedingForm()
+  return render(request, 'cats/detail.html', {
+    # include the cat and feeding_form in the context
+    'cat': cat, 'feeding_form': feeding_form
+  })
 
 # VID 3 (CBVs) 
 # Part 5 Step 4.2 CODE the VIEW as a CLASS (not DEF) for CREATE (New Page)

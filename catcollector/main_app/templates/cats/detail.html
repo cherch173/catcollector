@@ -28,14 +28,13 @@
     </div>
   </div>
   <div class="col s6">
-        <!-- VID # 5 (One to Many) Add UI for FeedingForm -->
-        <form method="POST">
-          {% csrf_token %}
-          <!-- Render the inputs -->
-          {{ feeding_form.as_p }}
-          <input type="submit" class="btn" value="Add Feeding" />
-        </form>
-        <br>
+    <form method="POST">
+      {% csrf_token %}
+      <!-- Render the inputs -->
+      {{ feeding_form.as_p }}
+      <input type="submit" class="btn" value="Add Feeding" />
+    </form>
+    <br>
     <table class="striped blue-grey" style="color:whitesmoke; border-radius: 5px;">
       <thead>
         <tr style="font-size: 2.5vmin;">
@@ -54,5 +53,16 @@
     </table>
   </div>
 </div>
+
+<script>
+  const dateEl = document.getElementById('id_date');
+     // M is Materialize's global variable
+    M.Datepicker.init(dateEl, {
+    format: 'yyyy-mm-dd',
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true
+  });
+</script>
 
 {% endblock %}
