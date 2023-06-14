@@ -18,5 +18,6 @@ urlpatterns = [
     # Step 6 Part 1 DEFINE the UPDATE *and* DELETE ROUTES as they're similar
     path('cats/<int:pk>/update/', views.CatUpdate.as_view(), name='cats_update'),
     path('cats/<int:pk>/delete/', views.CatDelete.as_view(), name='cats_delete'),
-
+    # VID # 5 (One to Many) DEFINE the FEEDING (one to many) ROUTE
+    path('cats/<int:cat_id>/add_feeding/', views.add_feeding, name='add_feeding'),
 ]
