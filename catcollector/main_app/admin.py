@@ -15,7 +15,8 @@ from django.contrib import admin
 # import your models here
 
 # Step 9.3 IMPORT your MODEL
-from .models import Cat 
+# VID 4 (One to Many) Step 7.1 -- Add FEEDING to models import
+from .models import Cat, Feeding 
 
 
 
@@ -23,3 +24,5 @@ from .models import Cat
 # Register your models here.
 # Step 9.4 REGISTER our MODELS in admin.py
 admin.site.register(Cat)
+# VID 4 (One to Many) Step 7.2 -- REGISTER FEEDING
+admin.site.register(Feeding)
