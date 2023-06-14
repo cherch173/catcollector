@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # VID 3 (CBVs)
 # Part 5 Step 4 IMPORT the CREATE VIEW
@@ -46,6 +46,17 @@ def cats_detail(request, cat_id):
     # include the cat and feeding_form in the context
     'cat': cat, 'feeding_form': feeding_form
   })
+
+# VID 5 (One to Many) Part 10.3 
+# DEFINE add_feeding
+def add_feeding(request, cat_id):
+    form = FeedingForm(request.POST)
+    if form.is_valid():
+        new_feeding = form.save(commit=False)
+        new_feeding.cat_id = cat_id
+        new_feeding.save()
+    return redirect('detail', cat_id=cat_id)
+
 
 # VID 3 (CBVs) 
 # Part 5 Step 4.2 CODE the VIEW as a CLASS (not DEF) for CREATE (New Page)
