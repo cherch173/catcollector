@@ -7,6 +7,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # VID 2 (Models) Step 8.0 IMPORT the CAT MODEL
 from .models import Cat
+# VID #5 (One to Many) Part 9.2
+# IMPORT the FEEDING Model Form
+from .forms import FeedingForm
 
 
 
@@ -37,8 +40,12 @@ def cats_index(request):
     # DEFINE Addtl PARAMETERS to ACCEPT your NEW ARGUMENTS (passed in as KWARG)
 def cats_detail(request, cat_id):
     cat = Cat.objects.get(id=cat_id)
+    # VID # 5 (One to Many)
+    # Part 9.3 Instantiate FeedingForm to be rendered in the template
+    feeding_form = FeedingForm()
     return render(request, 'cats/detail.html', { 
-        'cat': cat 
+        'cat': cat,
+        'feeding_form': feeding_form 
     })
 
 # VID 3 (CBVs) 
