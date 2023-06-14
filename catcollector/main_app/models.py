@@ -2,6 +2,8 @@ from django.db import models
 # VID 3 (CBVs) Part 5 Step 5.7
 # import REVERSE
 from django.urls import reverse
+# VID 5 (one to many) Bonus Material IMPORT DATE
+from datetime import date
 
 # Create your models here.
 
@@ -25,7 +27,8 @@ class Cat(models.Model):
     description = models.TextField(max_length=250)
     age = models.IntegerField()
     # use DecimalField for MONEY or MONETARY VALUE
-
+    def fed_for_today(self):
+        return self.feeding_set.filter(date=date.today()).count() >= len(MEALS)
 # VID 2 (Models) Step 6.0 MIGRATIONS
 # make MIGRATIONS to update the database with your new MODEL
 # be very very CAREFUL as this can cause a loss of data if done compulsively

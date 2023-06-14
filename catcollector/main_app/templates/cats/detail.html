@@ -34,6 +34,17 @@
       <input type="submit" class="btn" value="Add Feeding" />
     </form>
     <br>
+    <!-- Bonus Material VID 5 -->
+    <br />
+  {% if cat.fed_for_today %}
+  <div class="card-panel teal-text center-align">
+    {{cat.name}} is well-fed and chonktastic rbn
+  </div>
+  {% else %}
+  <div class="card-panel red-text center-align">
+    {{cat.name}} miiiiight be hungry
+  </div>
+  {% endif %}
     <table class="striped blue-grey" style="color:whitesmoke; border-radius: 5px;">
       <thead>
         <tr style="font-size: 2.5vmin;">
